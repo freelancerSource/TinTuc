@@ -3,6 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class User extends CI_Controller {
 
+    public function __construct() {
+        parent::__construct();
+        $this->load->model('UserModel');
+    }
+
     public function index()
     {
         $this->load->view('welcome_message');
@@ -15,7 +20,23 @@ class User extends CI_Controller {
     public function login(){
         $data = array();
         if($this->input->post()){
-
+            $user       = $this->input->post('email');
+            $password   = $this->input->post('password');
+            $remember   = $this->input->post('remember');
+            if(empty($user) || empty($password)){
+                return 'User, password ko được trống';
+            }
+            $user = $this->UserModel->getUser($user, $password);
+            if(!empty($user)){
+                $this->session->set_userdata(
+                    array(
+                        'username'  => $user->username,
+                        'email'     => $user->email,
+                        'role'      => $user->role
+                    )
+                );
+            }
+            redirect('admin/home');
         }
         $data['temp'] = 'back-end/user/login';
         $data['title'] = 'Đăng nhập';
