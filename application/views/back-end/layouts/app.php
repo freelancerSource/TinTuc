@@ -19,18 +19,18 @@
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="<?php echo base_url()?>public/css/skins/_all-skins.min.css">
-
+    <script src="<?php echo base_url()?>public/plugins/jQuery/jquery-2.2.3.min.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <?php if(!empty($plugin['css'])):?>
-    <?php foreach ($plugin['css'] as $row):?>
-    <link href="<?php echo base_url()?>public/asset/css/<?php echo $row?>" rel="stylesheet">
-    <?php endforeach;?>
-    <?php endif;?>
     <![endif]-->
+    <?php if(!empty($plugin['css'])):?>
+        <?php foreach ($plugin['css'] as $row):?>
+            <link href='<?php echo base_url()?>public/<?php echo $row?>' rel="stylesheet">
+        <?php endforeach;?>
+    <?php endif;?>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -66,8 +66,6 @@
 </div>
 <!-- ./wrapper -->
 
-<!-- jQuery 2.2.3 -->
-<script src="<?php echo base_url()?>public/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="<?php echo base_url()?>public/bootstrap/js/bootstrap.min.js"></script>
 <!-- FastClick -->
@@ -83,13 +81,11 @@
 <script src="<?php echo base_url()?>public/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- ChartJS 1.0.1 -->
 <script src="<?php echo base_url()?>public/plugins/chartjs/Chart.min.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="<?php echo base_url()?>public/js/pages/dashboard2.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url()?>public/js/demo.js"></script>
 <?php if(!empty($plugin['js'])):?>
     <?php foreach ($plugin['js'] as $row):?>
-        <script src="<?php echo base_url()?>public/asset/js/<?php echo $row?>"></script>
+        <script src="<?php echo base_url()?>public/<?php echo $row?>"></script>
     <?php endforeach;?>
 <?php endif;?>
 </body>

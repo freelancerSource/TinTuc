@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Home extends CI_Controller {
+class News extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
@@ -9,7 +9,21 @@ class Home extends CI_Controller {
     }
 
     public function index(){
-        $this->load->view('back-end/layouts/app');
+        $data = array();
+        $data['temp'] = 'back-end/news/index';
+        $data['title'] = 'news';
+        $data['plugin'] = array(
+            'js'=>array(
+                'plugins/datatables/jquery.dataTables.min.js',
+                'plugins/datatables/dataTables.bootstrap.min.js',
+                'plugins/slimScroll/jquery.slimscroll.min.js',
+            ),
+            'css'=>array(
+                'plugins/datatables/dataTables.bootstrap.css',
+            )
+        );
+
+        $this->load->view('back-end/layouts/app',  $data);
     }
 
     public function logout(){
@@ -40,8 +54,13 @@ class Home extends CI_Controller {
         $data['temp'] = 'back-end/user/login';
         $data['title'] = 'Đăng nhập';
         $data['plugin'] = array(
-            'js'=>array('plugins/metisMenu/jquery.metisMenu.js','plugins/slimscroll/jquery.slimscroll.min.js','plugins/jeditable/jquery.jeditable.js','plugins/dataTables/datatables.min.js','inspinia.js', 'plugins/pace/pace.min.js'),
-            'css'=>array('plugins/dataTables/datatables.min.css')
+            'js'=>array(
+                'public/plugins/datatables/jquery.dataTables.min.js',
+                'public/plugins/datatables/dataTables.bootstrap.min.js',
+                'plugins/plugins/slimScroll/jquery.slimscroll.min.js',
+                'public/plugins/fastclick/fastclick.js',
+            ),
+            'css'=>array('public/css/skins/_all-skins.min.css')
         );
         $this->load->view('back-end/user/login',$data);
     }
